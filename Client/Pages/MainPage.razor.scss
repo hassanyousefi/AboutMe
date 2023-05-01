@@ -1,0 +1,55 @@
+@import "../Shared/Style/abstracts.scss";
+
+.page-container {
+    padding: 120px 100px;
+    background: url(/images/Beehive-background.png) no-repeat center;
+    background-size: cover;
+}
+
+.basic-information {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.info-container {
+    display: flex;
+    flex-flow: column nowrap;
+
+    .full-name {
+        font-size: 60px;
+        font-weight: 600;
+        color: $Primary;
+    }
+
+    .job-title {
+        font-size: 30px;
+        font-weight: 500;
+        color: $Secondry;
+        margin-bottom: 1rem;
+    }
+
+    .main-contact-info {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+
+        div {
+            width: 50%;
+            margin-bottom: 10px;
+            display: flex;
+        }
+    }
+}
+
+::deep .main-contact-info-icons {
+    font-size: 18px;
+    margin-right: 10px;
+    color: $Secondry;
+}
+
+.my-pic {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}

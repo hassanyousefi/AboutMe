@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Pages/MainPage.razor.css",
+    "inputFile": "Pages/MainPage.razor.scss"
+  },
+  {
+    "outputFile": "Shared/Style/abstracts.css",
+    "inputFile": "Shared/Style/abstracts.scss"
+  }
+]
