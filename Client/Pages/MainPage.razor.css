@@ -47,3 +47,132 @@
   width: 200px;
   border-radius: 50%;
 }
+
+.page-content {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-top: 30px;
+}
+
+.left-section {
+  flex: 3;
+  margin-right: 100px;
+}
+
+.right-section {
+  flex: 2;
+}
+
+.section-title {
+  font-size: 30px;
+  margin: 20px 0;
+  padding-bottom: 3px;
+  border-bottom: 5px solid #002b7f;
+  color: #002b7f;
+  font-weight: bold;
+}
+
+.experience-item {
+  padding-bottom: 20px;
+  border-bottom: 2px dotted #d7d7d7;
+  margin-bottom: 20px;
+}
+.experience-item:last-child, .experience-item:only-child {
+  border: none;
+}
+.experience-item .experience-job-title {
+  font-size: 20px;
+  color: #002b7f;
+  margin-bottom: 5px;
+}
+.experience-item .company-name {
+  color: #56acf2;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.experience-item .work-detail {
+  display: flex;
+  justify-content: flex-start;
+  color: #384347;
+}
+.experience-item .work-detail span {
+  font-size: 12px;
+  margin: 2px 4px 0;
+}
+.experience-item .work-description {
+  color: #383838;
+}
+
+.language-container {
+  padding-bottom: 15px;
+  border-bottom: 2px dotted #d7d7d7;
+  margin-bottom: 20px;
+}
+.language-container:last-child, .language-container:only-child {
+  border: none;
+}
+.language-container .lang-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.language-container .lang-detail .lang-text {
+  font-weight: bolder;
+  color: #002b7f;
+}
+.language-container .lang-detail .lang-level {
+  color: #383838;
+  font-size: 14px;
+}
+.language-container ::deep .bar {
+  background-color: #56acf2;
+  border-radius: 10px;
+}
+
+.communication-way {
+  display: flex;
+  align-items: center;
+  padding-bottom: 7px;
+  border-bottom: 2px dotted #d7d7d7;
+  margin-bottom: 15px;
+}
+.communication-way:last-child, .communication-way:only-child {
+  border: none;
+}
+.communication-way span {
+  font-weight: bolder;
+  color: #002b7f;
+  margin-left: 10px;
+}
+
+::deep .blue-icon {
+  color: #2f69db;
+  font-size: 24px;
+  height: 24px;
+}
+
+.skills-container {
+  padding-bottom: 7px;
+  border-bottom: 2px dotted #d7d7d7;
+  margin-bottom: 15px;
+}
+.skills-container:last-child, .skills-container:only-child {
+  border: none;
+}
+.skills-container .skill-title {
+  color: #56acf2;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+.skills-container .skill-items {
+  display: flex;
+  flex-flow: row wrap;
+}
+.skills-container .skill-items .skill-item {
+  padding: 7px;
+  border: 1px solid #d7d7d7;
+  margin: 0 7px 7px 0;
+  font-weight: bold;
+  color: #383838;
+}
