@@ -81,7 +81,7 @@
 
 .experience-item {
     padding-bottom: 20px;
-    border-bottom: 2px dotted $Gray2;
+    border-bottom: 1px dashed $Gray2;
     margin-bottom: 20px;
 
     &:last-child, &:only-child {
@@ -114,13 +114,26 @@
 
     .work-description {
         color: $Gray1;
+        padding-left: 8px;
+
+        .work-des-item {
+            position: relative;
+
+            &::before {
+                content: ".";
+                font-size: 30px;
+                position: absolute;
+                top: -18px;
+                left: -10px;
+            }
+        }
     }
 }
 
 
 .language-container {
     padding-bottom: 15px;
-    border-bottom: 2px dotted $Gray2;
+    border-bottom: 1px dashed $Gray2;
     margin-bottom: 20px;
 
     &:last-child, &:only-child {
@@ -152,8 +165,8 @@
 .communication-way {
     display: flex;
     align-items: center;
-    padding-bottom: 7px;
-    border-bottom: 2px dotted $Gray2;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed $Gray2;
     margin-bottom: 15px;
 
     &:last-child, &:only-child {
@@ -175,7 +188,7 @@
 
 .skills-container {
     padding-bottom: 7px;
-    border-bottom: 2px dotted $Gray2;
+    border-bottom: 1px dashed $Gray2;
     margin-bottom: 15px;
 
     &:last-child, &:only-child {
@@ -200,4 +213,9 @@
             color: $Gray1;
         }
     }
+}
+
+li::marker {
+    color: red;
+    font-size: 1.5em;
 }
