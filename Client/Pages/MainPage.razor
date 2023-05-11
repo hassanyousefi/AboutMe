@@ -5,24 +5,24 @@
 <div class="page-container">
     <div class="basic-information">
         <div class="info-container">
-            <div class="full-name">HASSAN YOUSEFI</div>
-            <div class="job-title">Frontend Developer</div>
+            <div class="full-name">@Resume.BasicInfo.Name</div>
+            <div class="job-title">@Resume.BasicInfo.JobTitle</div>
             <div class="main-contact-info">
                 <div class="phone-num">
                     <BitIcon IconName="BitIconName.Phone" AriaLabel="Phone Number" Class="main-contact-info-icons" />
-                    <span>+98 922 118 0851</span>
+                    <span>@Resume.BasicInfo.PhoneNumber</span>
                 </div>
                 <div class="email">
                     <BitIcon IconName="BitIconName.Mail" AriaLabel="Gmail" Class="main-contact-info-icons" />
-                    <span>hasanusefi69@gmail.com</span>
+                    <span>@Resume.BasicInfo.Email</span>
                 </div>
                 <div class="github-link">
                     <BitIcon IconName="BitIconName.GitGraph" AriaLabel="Github" Class="main-contact-info-icons" />
-                    <span>github.com/hassanyousefi</span>
+                    <span>@Resume.BasicInfo.GitAddress</span>
                 </div>
                 <div class="location">
                     <BitIcon IconName="BitIconName.Home" AriaLabel="Location" Class="main-contact-info-icons" />
-                    <span>Iran, Tehran</span>
+                    <span>@Resume.BasicInfo.Location</span>
                 </div>
             </div>
         </div>
@@ -33,84 +33,39 @@
         <section class="left-section">
             <div class="content-section">
                 <div class="section-title">EXPERIENCE</div>
-                <div class="experience-item">
-                    <div class="experience-job-title">Angular Developer</div>
-                    <div class="company-name">RIGID ROBOTICS</div>
-                    <div class="work-detail">
-                        <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
-                        <span>2022 - 2023</span>
+
+                @foreach (var experience in Resume.Experiences)
+                {
+                    <div class="experience-item">
+                        <div class="experience-job-title">@experience.PostTitle</div>
+                        <div class="company-name">@experience.CompanyName</div>
+                        <div class="work-detail">
+                            <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
+                            <span>@experience.WorkDateRange</span>
+                        </div>
+                        <div class="work-detail">
+                            <BitIcon IconName="BitIconName.Link" AriaLabel="Link"></BitIcon>
+                            <span>@experience.CompanySiteAddress</span>
+                        </div>
+                        <div class="work-description">
+                            @foreach (var workDes in experience.WorkDescriptions)
+                            {
+                                <div class="work-des-item">@((MarkupString)workDes)</div>
+                            }
+                        </div>
                     </div>
-                    <div class="work-detail">
-                        <BitIcon IconName="BitIconName.Link" AriaLabel="Link"></BitIcon>
-                        <span>rigidrobotics.com</span>
-                    </div>
-                    <div class="work-description">
-                        <div class="work-des-item">Collaborated remotely with a specialist team (called the <b>Bit Foundation</b> team) of 6 other members</div>
-                        <div class="work-des-item">With the scrum methodology</div>
-                        <div class="work-des-item">The UI/UX design by Figma was delivered to the frontend team</div>
-                        <div class="work-des-item">The project was an enterprise portal for IoT devices, and one of the challenges was to implement and update a rather complex diagram that visualized the roadmap from IoT devices to customers.</div>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <div class="experience-job-title">Angular Developer</div>
-                    <div class="company-name">Jabiz Parda</div>
-                    <div class="work-detail">
-                        <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
-                        <span>07/2021 - 07/2022</span>
-                    </div>
-                    <div class="work-detail">
-                        <BitIcon IconName="BitIconName.Link" AriaLabel="Link"></BitIcon>
-                        <span>jabizparda.com</span>
-                    </div>
-                    <div class="work-description">
-                        <div class="work-des-item">Collaborated remotely with a team of 5 other members as frontend team leader</div>
-                        <div class="work-des-item">Developed various software applications for small businesses</div>
-                        <div class="work-des-item">The UI/UX design by Zeplin and Figma was delivered to the frontend team</div>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <div class="experience-job-title">Angular Developer</div>
-                    <div class="company-name">MelkRadar</div>
-                    <div class="work-detail">
-                        <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
-                        <span>10/2020 - 10/2021</span>
-                    </div>
-                    <div class="work-detail">
-                        <BitIcon IconName="BitIconName.Link" AriaLabel="Link"></BitIcon>
-                        <span>melkradar.com</span>
-                    </div>
-                    <div class="work-description">
-                        <div class="work-des-item">Collaborated remotely with a specialist team of 8 other members</div>
-                        <div class="work-des-item">With the scrum methodology</div>
-                        <div class="work-des-item">The UI/UX design by Zeplin was delivered to the frontend team</div>
-                        <div class="work-des-item">A software project that collects home buying and selling ads and can be used in different ways, such as a website, an android app (webview) and a PWA. One of the major challenges was displaying the UI correctly on all platforms.</div>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <div class="experience-job-title">Intern</div>
-                    <div class="company-name">CS Internship</div>
-                    <div class="work-detail">
-                        <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
-                        <span>2019 - 2021</span>
-                    </div>
-                    <div class="work-detail">
-                        <BitIcon IconName="BitIconName.Link" AriaLabel="Link"></BitIcon>
-                        <span>virgool.io/cs-internship</span>
-                    </div>
-                    <div class="work-description">
-                        The CS Internship is a remote programming training course that includes learning soft skills, hard skills, remote work and teamwork.
-                    </div>
-                </div>
+                }
+
             </div>
 
             <div class="content-section">
                 <div class="section-title">EDUCATION</div>
                 <div class="experience-item">
-                    <div class="experience-job-title">Computer Science</div>
-                    <div class="company-name">University of Tabriz</div>
+                    <div class="experience-job-title">@Resume.Education.FieldOfStudy</div>
+                    <div class="company-name">@Resume.Education.UniversityName</div>
                     <div class="work-detail">
                         <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
-                        <span>2018 - 2023</span>
+                        <span>@Resume.Education.EducationDateRange</span>
                     </div>
                 </div>
             </div>
@@ -120,30 +75,26 @@
         <section class="right-section">
             <div class="content-section">
                 <div class="section-title">LANGUAGES</div>
-                <div class="language-container">
-                    <div class="lang-detail">
-                        <div class="lang-text">Persian</div>
-                        <div class="lang-level">Native</div>
+                @foreach (var lang in Resume.Languages)
+                {
+                    <div class="language-container">
+                        <div class="lang-detail">
+                            <div class="lang-text">@lang.LangName</div>
+                            <div class="lang-level">@GetLangLevel(lang.Level)</div>
+                        </div>
+                        <BitProgressIndicator PercentComplete="@lang.Level" BarHeight="6" />
                     </div>
-                    <BitProgressIndicator PercentComplete="100" BarHeight="6" />
-                </div>
-                <div class="language-container">
-                    <div class="lang-detail">
-                        <div class="lang-text">English</div>
-                        <div class="lang-level">Advanced</div>
-                    </div>
-                    <BitProgressIndicator PercentComplete="60" BarHeight="6" />
-                </div>
+                }
             </div>
             <div class="content-section">
                 <div class="section-title">FIND ME ONLINE</div>
                 <div class="communication-way">
                     <img src="/images/icons8-telegram-24.png" />
-                    <span>hassanusefi</span>
+                    <span>@Resume.TelegramId</span>
                 </div>
                 <div class="communication-way">
                     <BitIcon IconName="BitIconName.LinkedInLogo" AriaLabel="Calendar" Class="blue-icon"></BitIcon>
-                    <span>hassan-yousefi</span>
+                    <span>@Resume.LinkedInProfile</span>
                 </div>
             </div>
             <div class="content-section">
@@ -151,32 +102,28 @@
                 <div class="skills-container">
                     <div class="skill-title">Hard Skills</div>
                     <div class="skill-items">
-                        <span class="skill-item">JavaScript</span>
-                        <span class="skill-item">TypeScript</span>
-                        <span class="skill-item">Angular</span>
-                        <span class="skill-item">HTML</span>
-                        <span class="skill-item">CSS</span>
-                        <span class="skill-item">SCSS</span>
-                        <span class="skill-item">Git</span>
+                        @foreach (var hardSkill in Resume.HardSkills)
+                        {
+                            <span class="skill-item">@hardSkill</span>
+                        }
                     </div>
                 </div>
                 <div class="skills-container">
                     <div class="skill-title">Soft Skills</div>
                     <div class="skill-items">
-                        <span class="skill-item">Teamwork</span>
-                        <span class="skill-item">Responsibility</span>
-                        <span class="skill-item">Remote Work</span>
-                        <span class="skill-item">Active listening</span>
+                        @foreach (var softSkill in Resume.SoftSkills)
+                        {
+                            <span class="skill-item">@softSkill</span>
+                        }
                     </div>
                 </div>
                 <div class="skills-container">
                     <div class="skill-title">Tools</div>
                     <div class="skill-items">
-                        <span class="skill-item">VS Code</span>
-                        <span class="skill-item">Visual Studio</span>
-                        <span class="skill-item">Github</span>
-                        <span class="skill-item">Microsoft Azure</span>
-                        <span class="skill-item">Microsoft Teams</span>
+                        @foreach (var tool in Resume.Tools)
+                        {
+                            <span class="skill-item">@tool</span>
+                        }
                     </div>
                 </div>
             </div>
