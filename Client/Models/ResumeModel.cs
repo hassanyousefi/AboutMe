@@ -5,7 +5,7 @@ public class ResumeModel
 
     public List<ExperienceModel> Experiences { get; set; }
 
-    public EducationModel Education { get; set; }
+    public List<EducationModel> Educations { get; set; }
 
     public List<LanguageModel> Languages { get; set; }
 

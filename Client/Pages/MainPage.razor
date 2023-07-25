@@ -67,14 +67,17 @@ else
 
                 <div class="content-section">
                     <div class="section-title">EDUCATION</div>
-                    <div class="experience-item">
-                        <div class="experience-job-title">@ResumeInstance.Education.FieldOfStudy</div>
-                        <div class="company-name">@ResumeInstance.Education.UniversityName</div>
-                        <div class="work-detail">
-                            <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
-                            <span>@ResumeInstance.Education.EducationDateRange</span>
+                    @foreach (var education in ResumeInstance.Educations)
+                    {
+                        <div class="experience-item">
+                            <div class="experience-job-title">@education.FieldOfStudy</div>
+                            <div class="company-name">@education.UniversityName</div>
+                            <div class="work-detail">
+                                <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
+                                <span>@education.EducationDateRange</span>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </section>
 

@@ -6,7 +6,7 @@ public partial class MainPage
 {
 
     public ResumeModel ResumeInstance { get; set; }
-    public bool isModalOpen = true;
+    public bool isModalOpen = false;
     protected async override Task OnInitializedAsync()
     {
         ResumeInstance = new()
@@ -66,11 +66,20 @@ public partial class MainPage
                         },
                     },
             },
-            Education = new EducationModel
+            Educations = new List<EducationModel>
             {
-                FieldOfStudy = "Computer Science",
-                UniversityName = "University of Tabriz",
-                EducationDateRange = "2018 - 2023",
+                    new EducationModel
+                    {
+                        FieldOfStudy = "Computer Science",
+                        UniversityName = "University of Tabriz",
+                        EducationDateRange = "2018 - 2023",
+                    },
+                    new EducationModel
+                    {
+                        FieldOfStudy = "Computer Science",
+                        UniversityName = "University of Tabriz",
+                        EducationDateRange = "2018 - 2023",
+                    }
             },
             Languages = new List<LanguageModel> {
                     new LanguageModel

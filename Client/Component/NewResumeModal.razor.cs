@@ -16,7 +16,7 @@ public partial class NewResumeModal
             BasicInfo = new BasicInfoModel { },
             Experiences = new List<ExperienceModel> { },
             Languages = new List<LanguageModel> { },
-
+            Educations = new List<EducationModel> { },
         };
     }
 
@@ -27,6 +27,10 @@ public partial class NewResumeModal
     private List<string> WorkDescriptions { get; set; } = new List<string>();
 
     private string HardSkillsInput { get; set; } = "";
+
+    private string SoftSkillsInput { get; set; } = "";
+
+    private string ToolsInput { get; set; } = "";
 
     private List<string> WorkDescriptionsInputList { get; set; } = new List<string>();
 
@@ -51,6 +55,11 @@ public partial class NewResumeModal
     private void AddLanguage()
     {
         ResumeInstance.Languages.Add(new LanguageModel());
+    }
+
+    private void AddEducation()
+    {
+        ResumeInstance.Educations.Add(new EducationModel());
     }
 
     private void SaveResume()

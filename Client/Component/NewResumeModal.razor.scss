@@ -1,6 +1,5 @@
 .background-shadow {
-    background-color: black;
-    opacity: 0.4;
+    background-image: linear-gradient(to right, #005aa7, #fffde4);
     width: 100%;
     height: 100vh;
     position: absolute;
@@ -9,10 +8,9 @@
 
 .modal-dialog {
     display: block;
-    max-width: 800px;
-    max-height: 600px;
-    overflow-y: auto;
-    margin: 100px auto;
+    max-width: 1200px;
+    height: 700px;
+    margin: 15vh auto;
     position: absolute;
     left: 0;
     right: 0;
@@ -20,36 +18,49 @@
     z-index: 3;
     border-radius: 0.5rem;
 
-    .modal-content {
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    .modal-header {
+        border-bottom: 1px solid gray;
+        padding: 15px 30px;
+        font-size: 18px;
 
-        .modal-header {
-            border-bottom: 1px solid gray;
-            padding: 15px 30px;
-            font-size: 18px;
-
-            h3 {
-                margin-top: 0;
-            }
-
-            button {
-                color: #fff;
-                opacity: 0.8;
-
-                &:hover {
-                    opacity: 1;
-                }
-            }
+        h3 {
+            margin-top: 0;
         }
 
+        button {
+            color: #fff;
+            opacity: 0.8;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .modal-content {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        height: calc(100% - 56px);
+        overflow: auto;
+
         .modal-body {
+            display: flex;
+            flex-flow: row wrap;
             padding: 30px 50px;
 
             .form-group {
                 margin-bottom: 1rem;
+                width: 100%;
 
                 &:last-of-type {
                     margin: 0 !important;
+                }
+
+                &.w-50 {
+                    width: 48%;
+
+                    &:nth-child(even) {
+                        margin-left: 4%;
+                    }
                 }
 
                 label {
@@ -92,6 +103,9 @@
                 padding: 25px;
 
                 .card-body {
+                    display: flex;
+                    flex-flow: row wrap;
+
                     .form-group {
                         margin-bottom: 1rem;
                     }
@@ -101,10 +115,10 @@
 
         .modal-footer {
             border-top: 1px solid #ccc;
-            padding: 20px 45px;
+            padding: 15px 30px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end;
         }
     }
 
@@ -112,11 +126,35 @@
         padding: 10px 20px;
         cursor: pointer;
         color: white;
-        border-radius: 8px;
-        background: #009b8d;
+        border-radius: 4px;
+        background: #005aa7;
+        transition: all 0.3s;
 
         &:hover {
-            background-color: #017369;
+            background-color: #013d70;
+        }
+    }
+
+    .btn-secondry {
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 4px;
+        background: transparent;
+        border: 1px solid #ccc;
+        margin-left: 10px;
+        transition: all 0.3s;
+
+        &:hover {
+            background-color: #ccc;
+        }
+    }
+
+    .cancel-btn {
+        @extend .btn-secondry;
+
+        &:hover {
+            color: white;
+            background: #c90000;
         }
     }
 
@@ -141,10 +179,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #009b8d;
+            background: #005aa7;
+            transition: all 0.3s;
 
             &:hover {
-                background-color: #017369;
+                background-color: #013d70;
             }
         }
     }
