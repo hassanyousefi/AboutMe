@@ -1,132 +1,140 @@
 ﻿@page "/"
 
-<PageTitle>About Me</PageTitle>
 
-<div class="page-container">
-    <div class="basic-information">
-        <div class="info-container">
-            <div class="full-name">@Resume.BasicInfo.Name</div>
-            <div class="job-title">@Resume.BasicInfo.JobTitle</div>
-            <div class="main-contact-info">
-                <div class="phone-num">
-                    <BitIcon IconName="BitIconName.Phone" AriaLabel="Phone Number" Class="main-contact-info-icons" />
-                    <span>@Resume.BasicInfo.PhoneNumber</span>
-                </div>
-                <div class="email">
-                    <BitIcon IconName="BitIconName.Mail" AriaLabel="Gmail" Class="main-contact-info-icons" />
-                    <span>@Resume.BasicInfo.Email</span>
-                </div>
-                <div class="github-link">
-                    <BitIcon IconName="BitIconName.GitGraph" AriaLabel="Github" Class="main-contact-info-icons" />
-                    <span>@Resume.BasicInfo.GitAddress</span>
-                </div>
-                <div class="location">
-                    <BitIcon IconName="BitIconName.Home" AriaLabel="Location" Class="main-contact-info-icons" />
-                    <span>@Resume.BasicInfo.Location</span>
+
+<PageTitle>About Me</PageTitle>
+@if (isModalOpen)
+{
+    <AboutMe.Client.Component.NewResumeModal></AboutMe.Client.Component.NewResumeModal>
+}
+else
+{
+    <div class="page-container">
+        <div class="basic-information">
+            <div class="info-container">
+                <div class="full-name">@ResumeInstance.BasicInfo.Name</div>
+                <div class="job-title">@ResumeInstance.BasicInfo.JobTitle</div>
+                <div class="main-contact-info">
+                    <div class="phone-num">
+                        <BitIcon IconName="BitIconName.Phone" AriaLabel="Phone Number" Class="main-contact-info-icons" />
+                        <span>@ResumeInstance.BasicInfo.PhoneNumber</span>
+                    </div>
+                    <div class="email">
+                        <BitIcon IconName="BitIconName.Mail" AriaLabel="Gmail" Class="main-contact-info-icons" />
+                        <span>@ResumeInstance.BasicInfo.Email</span>
+                    </div>
+                    <div class="github-link">
+                        <BitIcon IconName="BitIconName.GitGraph" AriaLabel="Github" Class="main-contact-info-icons" />
+                        <span>@ResumeInstance.BasicInfo.GitAddress</span>
+                    </div>
+                    <div class="location">
+                        <BitIcon IconName="BitIconName.Home" AriaLabel="Location" Class="main-contact-info-icons" />
+                        <span>@ResumeInstance.BasicInfo.Location</span>
+                    </div>
                 </div>
             </div>
+            <img class="my-pic" src="/images/my-pic.jpg" />
         </div>
-        <img class="my-pic" src="/images/my-pic.jpg" />
-    </div>
 
-    <div class="page-content">
-        <section class="left-section">
-            <div class="content-section">
-                <div class="section-title">EXPERIENCE</div>
+        <div class="page-content">
+            <section class="left-section">
+                <div class="content-section">
+                    <div class="section-title">EXPERIENCE</div>
 
-                @foreach (var experience in Resume.Experiences)
-                {
+                    @foreach (var experience in ResumeInstance.Experiences)
+                    {
+                        <div class="experience-item">
+                            <div class="experience-job-title">@experience.PostTitle</div>
+                            <div class="company-name">@experience.CompanyName</div>
+                            <div class="work-detail">
+                                <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
+                                <span>@experience.WorkDateRange</span>
+                            </div>
+                            <div class="work-detail">
+                                <BitIcon IconName="BitIconName.Link" AriaLabel="Link"></BitIcon>
+                                <span>@experience.CompanySiteAddress</span>
+                            </div>
+                            <div class="work-description">
+                                @foreach (var workDes in experience.WorkDescriptions)
+                                {
+                                    <div class="work-des-item">@((MarkupString)workDes)</div>
+                                }
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+                <div class="content-section">
+                    <div class="section-title">EDUCATION</div>
                     <div class="experience-item">
-                        <div class="experience-job-title">@experience.PostTitle</div>
-                        <div class="company-name">@experience.CompanyName</div>
+                        <div class="experience-job-title">@ResumeInstance.Education.FieldOfStudy</div>
+                        <div class="company-name">@ResumeInstance.Education.UniversityName</div>
                         <div class="work-detail">
                             <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
-                            <span>@experience.WorkDateRange</span>
+                            <span>@ResumeInstance.Education.EducationDateRange</span>
                         </div>
-                        <div class="work-detail">
-                            <BitIcon IconName="BitIconName.Link" AriaLabel="Link"></BitIcon>
-                            <span>@experience.CompanySiteAddress</span>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="right-section">
+                <div class="content-section">
+                    <div class="section-title">LANGUAGES</div>
+                    @foreach (var lang in ResumeInstance.Languages)
+                    {
+                        <div class="language-container">
+                            <div class="lang-detail">
+                                <div class="lang-text">@lang.LangName</div>
+                                <div class="lang-level">@GetLangLevel(lang.Level)</div>
+                            </div>
+                            <BitProgressIndicator PercentComplete="@lang.Level" BarHeight="6" />
                         </div>
-                        <div class="work-description">
-                            @foreach (var workDes in experience.WorkDescriptions)
+                    }
+                </div>
+                <div class="content-section">
+                    <div class="section-title">FIND ME ONLINE</div>
+                    <div class="communication-way">
+                        <img src="/images/icons8-telegram-24.png" />
+                        <span>@ResumeInstance.TelegramId</span>
+                    </div>
+                    <div class="communication-way">
+                        <BitIcon IconName="BitIconName.LinkedInLogo" AriaLabel="Calendar" Class="blue-icon"></BitIcon>
+                        <span>@ResumeInstance.LinkedInProfile</span>
+                    </div>
+                </div>
+                <div class="content-section">
+                    <div class="section-title">SKILLS</div>
+                    <div class="skills-container">
+                        <div class="skill-title">Hard Skills</div>
+                        <div class="skill-items">
+                            @foreach (var hardSkill in ResumeInstance.HardSkills)
                             {
-                                <div class="work-des-item">@((MarkupString)workDes)</div>
+                                <span class="skill-item">@hardSkill</span>
                             }
                         </div>
                     </div>
-                }
-
-            </div>
-
-            <div class="content-section">
-                <div class="section-title">EDUCATION</div>
-                <div class="experience-item">
-                    <div class="experience-job-title">@Resume.Education.FieldOfStudy</div>
-                    <div class="company-name">@Resume.Education.UniversityName</div>
-                    <div class="work-detail">
-                        <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
-                        <span>@Resume.Education.EducationDateRange</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <section class="right-section">
-            <div class="content-section">
-                <div class="section-title">LANGUAGES</div>
-                @foreach (var lang in Resume.Languages)
-                {
-                    <div class="language-container">
-                        <div class="lang-detail">
-                            <div class="lang-text">@lang.LangName</div>
-                            <div class="lang-level">@GetLangLevel(lang.Level)</div>
+                    <div class="skills-container">
+                        <div class="skill-title">Soft Skills</div>
+                        <div class="skill-items">
+                            @foreach (var softSkill in ResumeInstance.SoftSkills)
+                            {
+                                <span class="skill-item">@softSkill</span>
+                            }
                         </div>
-                        <BitProgressIndicator PercentComplete="@lang.Level" BarHeight="6" />
                     </div>
-                }
-            </div>
-            <div class="content-section">
-                <div class="section-title">FIND ME ONLINE</div>
-                <div class="communication-way">
-                    <img src="/images/icons8-telegram-24.png" />
-                    <span>@Resume.TelegramId</span>
-                </div>
-                <div class="communication-way">
-                    <BitIcon IconName="BitIconName.LinkedInLogo" AriaLabel="Calendar" Class="blue-icon"></BitIcon>
-                    <span>@Resume.LinkedInProfile</span>
-                </div>
-            </div>
-            <div class="content-section">
-                <div class="section-title">SKILLS</div>
-                <div class="skills-container">
-                    <div class="skill-title">Hard Skills</div>
-                    <div class="skill-items">
-                        @foreach (var hardSkill in Resume.HardSkills)
-                        {
-                            <span class="skill-item">@hardSkill</span>
-                        }
+                    <div class="skills-container">
+                        <div class="skill-title">Tools</div>
+                        <div class="skill-items">
+                            @foreach (var tool in ResumeInstance.Tools)
+                            {
+                                <span class="skill-item">@tool</span>
+                            }
+                        </div>
                     </div>
                 </div>
-                <div class="skills-container">
-                    <div class="skill-title">Soft Skills</div>
-                    <div class="skill-items">
-                        @foreach (var softSkill in Resume.SoftSkills)
-                        {
-                            <span class="skill-item">@softSkill</span>
-                        }
-                    </div>
-                </div>
-                <div class="skills-container">
-                    <div class="skill-title">Tools</div>
-                    <div class="skill-items">
-                        @foreach (var tool in Resume.Tools)
-                        {
-                            <span class="skill-item">@tool</span>
-                        }
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
-</div>
+}

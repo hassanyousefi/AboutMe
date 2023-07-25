@@ -1,0 +1,79 @@
+﻿
+<div class="background-shadow"></div>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>New Resume</h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" @bind="@ResumeInstance.BasicInfo.Name" />
+            </div>
+            <div class="form-group">
+                <label for="jobTitle">Job Title:</label>
+                <input type="text" class="form-control" id="jobTitle" @bind="@ResumeInstance.BasicInfo.JobTitle" />
+            </div>
+            <div class="form-group">
+                <label for="telegramId">Telegram ID:</label>
+                <input type="text" class="form-control" id="telegramId" @bind="@ResumeInstance.TelegramId" />
+            </div>
+            <div class="form-group">
+                <label for="hardSkills">Hard Skills:</label>
+                <textarea class="form-control" id="hardSkills" rows="3" @bind="@HardSkillsInput"></textarea>
+                <small class="form-text text-muted">Enter each hard skill on a new line.</small>
+            </div>
+            <div class="form-group">
+                <label for="experiences">Experiences:</label>
+                @foreach (var experience in ResumeInstance.Experiences)
+                {
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="postTitle">Post Title:</label>
+                                <input type="text" class="form-control" @bind="@experience.PostTitle" />
+                            </div>
+                            <div class="form-group">
+                                <label for="companyName">Company Name:</label>
+                                <input type="text" class="form-control" @bind="@experience.CompanyName" />
+                            </div>
+                            <div class="form-group">
+                                <label for="workDescriptions">Work Descriptions:</label>
+                                <textarea class="form-control" rows="3" @bind="@WorkDescriptionsInput"></textarea>
+                                <small class="form-text text-muted">Enter each work description on a new line.</small>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <button class="btn btn-primary" @onclick="@AddExperience">Add Experience</button>
+            </div>
+            <div class="form-group">
+                <label for="languages">Languages:</label>
+                @foreach (var language in ResumeInstance.Languages)
+                {
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="langName">Language Name:</label>
+                                <input type="text" class="form-control" @bind="@language.LangName" />
+                            </div>
+                            <div class="form-group">
+                                <label for="level">Level:</label>
+                                <div class="input-group">
+                                    <input type="number" min="0" max="100" step="10" class="form-control" @bind="@language.Level" disabled style="width: 200px;" />
+                                    <button class="btn btn-outline-secondary" type="button" @onclick="@( () => { if(language.Level > 0) language.Level -= 10; } )">-</button>
+                                    <button class="btn btn-outline-secondary" type="button" @onclick="@( () => { if(language.Level < 100) language.Level += 10; } )">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <button class="btn btn-primary" @onclick="@AddLanguage">Add Language</button>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" @onclick="@SaveResume">Save</button>
+        </div>
+    </div>
+</div>

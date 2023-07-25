@@ -1,13 +1,15 @@
 ﻿using AboutMe.Client.Models;
+using System;
 
 namespace AboutMe.Client.Pages;
 public partial class MainPage
 {
 
-    public ResumeModel Resume { get; set; }
+    public ResumeModel ResumeInstance { get; set; }
+    public bool isModalOpen = true;
     protected async override Task OnInitializedAsync()
     {
-        Resume = new()
+        ResumeInstance = new()
         {
             BasicInfo = new BasicInfoModel
             {
@@ -107,7 +109,6 @@ public partial class MainPage
                     "Microsoft Teams",
             }
         };
-        await base.OnInitializedAsync();
     }
 
     private static string GetLangLevel(int levelNumber)
