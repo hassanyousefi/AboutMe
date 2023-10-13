@@ -1,11 +1,11 @@
 ﻿@page "/"
-
+@using AboutMe.Client.Component
 
 
 <PageTitle>About Me</PageTitle>
 @if (isModalOpen)
 {
-    <AboutMe.Client.Component.NewResumeModal></AboutMe.Client.Component.NewResumeModal>
+    <NewResumeModal ResumeInstance="@ResumeInstance" OnSubmit="@(data => HandleSubmit(data))" />
 }
 else
 {
@@ -33,7 +33,7 @@ else
                     </div>
                 </div>
             </div>
-            <img class="my-pic" src="/images/my-pic.jpg" />
+            <img class="my-pic" src="data:image/jpeg;base64,@ResumeInstance.BasicInfo.ProfilePhoto" />
         </div>
 
         <div class="page-content">
@@ -48,7 +48,7 @@ else
                             <div class="company-name">@experience.CompanyName</div>
                             <div class="work-detail">
                                 <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
-                                <span>@experience.WorkDateRange</span>
+                                <span>Start: @experience.WorkDateRange.StartDate?.ToString("yyyy-MM-dd") - End: @experience.WorkDateRange.EndDate?.ToString("yyyy-MM-dd")</span>
                             </div>
                             <div class="work-detail">
                                 <BitIcon IconName="BitIconName.Link" AriaLabel="Link"></BitIcon>
@@ -74,7 +74,7 @@ else
                             <div class="company-name">@education.UniversityName</div>
                             <div class="work-detail">
                                 <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
-                                <span>@education.EducationDateRange</span>
+                                <span>Start: @education.EducationDateRange.StartDate?.ToString("yyyy-MM-dd") - End: @education.EducationDateRange.EndDate?.ToString("yyyy-MM-dd")</span>
                             </div>
                         </div>
                     }

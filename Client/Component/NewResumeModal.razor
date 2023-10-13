@@ -2,9 +2,9 @@
 <div class="background-shadow"></div>
 
 <div class="modal-dialog">
-        <div class="modal-header">
-            <h3>New Resume</h3>
-        </div>
+    <div class="modal-header">
+        <h3>New Resume</h3>
+    </div>
     <div class="modal-content">
         <div class="modal-body">
             <div class="form-group w-50">
@@ -12,42 +12,63 @@
                 <input type="text" class="form-control" id="name" @bind="@ResumeInstance.BasicInfo.Name" />
             </div>
             <div class="form-group w-50">
+                <label for="inputFile">Photo:</label>
+                @if (fileBase64 != null)
+                {
+                    <img class="profile-image" src="data:@fileBase64.contentType;base64,@fileBase64.base64data" />
+                }
+                else
+                {
+                    <InputFile class="custom-file-input" OnChange="@OnChange" accept="image/png, image/jpeg, image/gif" id="inputFile" />
+                }
+            </div>
+            <div class="form-group w-50">
                 <label for="jobTitle">Job Title:</label>
                 <input type="text" class="form-control" id="jobTitle" @bind="@ResumeInstance.BasicInfo.JobTitle" />
             </div>
             <div class="form-group w-50">
-                <label for="name">Phone Number:</label>
-                <input type="text" class="form-control" id="name" @bind="@ResumeInstance.BasicInfo.PhoneNumber" />
+                <label for="email">Email:</label>
+                <input type="text" class="form-control" id="email" @bind="@ResumeInstance.BasicInfo.Email" />
             </div>
             <div class="form-group w-50">
-                <label for="name">Git Address:</label>
-                <input type="text" class="form-control" id="name" @bind="@ResumeInstance.BasicInfo.GitAddress" />
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="text" class="form-control" id="phoneNumber" @bind="@ResumeInstance.BasicInfo.PhoneNumber" />
             </div>
             <div class="form-group w-50">
-                <label for="name">Location:</label>
-                <input type="text" class="form-control" id="name" @bind="@ResumeInstance.BasicInfo.Email" />
+                <label for="gitAddress">Git Address:</label>
+                <input type="text" class="form-control" id="gitAddress" @bind="@ResumeInstance.BasicInfo.GitAddress" />
+            </div>
+            <div class="form-group w-50">
+                <label for="location">Location:</label>
+                <input type="text" class="form-control" id="location" @bind="@ResumeInstance.BasicInfo.Location" />
             </div>
             <div class="form-group w-50">
                 <label for="telegramId">Telegram ID:</label>
                 <input type="text" class="form-control" id="telegramId" @bind="@ResumeInstance.TelegramId" />
             </div>
             <div class="form-group w-50">
-                <label for="telegramId">LinkedIn Profile:</label>
-                <input type="text" class="form-control" id="telegramId" @bind="@ResumeInstance.LinkedInProfile" />
+                <label for="linkedInId">LinkedIn Profile:</label>
+                <input type="text" class="form-control" id="linkedInId" @bind="@ResumeInstance.LinkedInProfile" />
             </div>
             <div class="form-group">
                 <label for="hardSkills">Hard Skills:</label>
-                <textarea class="form-control" id="hardSkills" rows="3" @bind="@HardSkillsInput"></textarea>
+                <textarea class="form-control" id="hardSkills" rows="3" @bind="@HardSkillsInput" placeholder="HTML
+CSS
+.."></textarea>
                 <small class="form-text text-muted">Enter each hard skill on a new line.</small>
-            </div> 
+            </div>
             <div class="form-group">
                 <label for="softSkills">Soft Skills:</label>
-                <textarea class="form-control" id="softSkills" rows="3" @bind="@SoftSkillsInput"></textarea>
+                <textarea class="form-control" id="softSkills" rows="3" @bind="@SoftSkillsInput" placeholder="Active listening
+Teamwork
+.."></textarea>
                 <small class="form-text text-muted">Enter each hard skill on a new line.</small>
-            </div>    
+            </div>
             <div class="form-group">
                 <label for="tools">Tools:</label>
-                <textarea class="form-control" id="tools" rows="3" @bind="@ToolsInput"></textarea>
+                <textarea class="form-control" id="tools" rows="3" @bind="@ToolsInput" placeholder="VS Code
+Trello
+.."></textarea>
                 <small class="form-text text-muted">Enter each hard skill on a new line.</small>
             </div>
             <div class="form-group">
@@ -57,20 +78,28 @@
                     <div class="card mb-2">
                         <div class="card-body">
                             <div class="form-group w-50">
-                                <label for="postTitle">Post Title:</label>
+                                <label>Post Title:</label>
                                 <input type="text" class="form-control" @bind="@experience.PostTitle" />
                             </div>
                             <div class="form-group w-50">
-                                <label for="companyName">Company Name:</label>
+                                <label>Company Name:</label>
                                 <input type="text" class="form-control" @bind="@experience.CompanyName" />
                             </div>
-                            <div class="form-group">
-                                <label for="companyName">Work Date Range:</label>
-                                <input type="text" class="form-control" @bind="@experience.WorkDateRange" />
+                            <div class="form-group w-50">
+                                <label>Company Site Address:</label>
+                                <input type="text" class="form-control" @bind="@experience.CompanySiteAddress" />
+                            </div>
+                            <div class="form-group  w-50">
+                                <label>Work Date Range:</label>
+                                <BitDateRangePicker @bind-Value="@experience.WorkDateRange"
+                                                AriaLabel="Select dates"
+                                                Placeholder="Select dates..."
+                                                MaxDate="DateTimeOffset.Now" />
                             </div>
                             <div class="form-group">
                                 <label for="workDescriptions">Work Descriptions:</label>
-                                <textarea class="form-control" rows="3" @bind="@WorkDescriptionsInput"></textarea>
+                                <textarea class="form-control" rows="3"
+                                      @bind="WorkDescriptionsInputList[experience.Id]"></textarea>
                                 <small class="form-text text-muted">Enter each work description on a new line.</small>
                             </div>
                         </div>
@@ -115,9 +144,12 @@
                                 <label for="companyName">University Name:</label>
                                 <input type="text" class="form-control" @bind="@education.UniversityName" />
                             </div>
-                            <div class="form-group">
+                            <div class="form-group w-50">
                                 <label for="companyName">Education Date Range:</label>
-                                <input type="text" class="form-control" @bind="@education.EducationDateRange" />
+                                <BitDateRangePicker @bind-Value="@education.EducationDateRange"
+                                                AriaLabel="Select dates"
+                                                Placeholder="Select dates..."
+                                                MaxDate="DateTimeOffset.Now" />
                             </div>
                         </div>
                     </div>

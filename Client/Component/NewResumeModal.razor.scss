@@ -19,9 +19,11 @@
     border-radius: 0.5rem;
 
     .modal-header {
-        border-bottom: 1px solid gray;
         padding: 15px 30px;
         font-size: 18px;
+        box-shadow: 0 0 6px gray;
+        z-index: 3;
+        position: relative;
 
         h3 {
             margin-top: 0;
@@ -69,26 +71,30 @@
                     display: block;
                 }
 
+                .profile-image {
+                    max-height: 300px;
+                    width: 300px;
+                    margin: 10px 0;
+                }
+
                 input[type="text"],
                 textarea {
-                    font-size: 1rem;
-                    padding: 0.5rem;
-                    border-radius: 0.25rem;
-                    border: 1px solid #ccc;
+                    font-size: 15px;
+                    padding: 7px;
+                    border-radius: 2px;
+                    border: 1px solid #777;
                     width: 100%;
                     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
                     &:focus {
-                        outline: none;
-                        border-color: #007bff;
-                        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                        outline-color: #0078D4;
                     }
                 }
-
 
                 textarea {
                     resize: none;
                     min-height: 10rem;
+                    content: "Line 1\A Line 2\A Line 3\A";
                 }
 
                 small.form-text {
@@ -97,7 +103,7 @@
             }
 
             .card {
-                border: 1px solid #ccc;
+                border: 1px solid #777;
                 border-radius: 0.25rem;
                 margin-bottom: 1rem;
                 padding: 25px;

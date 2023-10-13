@@ -8,5 +8,6 @@ public class BasicInfoModel
     public string PhoneNumber { get; set; }
     public string GitAddress { get; set; }
     public string Location { get; set; }
+    public string ProfilePhoto { get; set; }
 }
 
