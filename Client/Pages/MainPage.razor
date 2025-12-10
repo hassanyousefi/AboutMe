@@ -33,7 +33,7 @@ else
                     </div>
                 </div>
             </div>
-            <img class="my-pic" src="data:image/jpeg;base64,@ResumeInstance.BasicInfo.ProfilePhoto" />
+            <img class="my-pic" src="@ResumeInstance.BasicInfo.ProfilePhoto" />
         </div>
 
         <div class="page-content">
@@ -48,7 +48,7 @@ else
                             <div class="company-name">@experience.CompanyName</div>
                             <div class="work-detail">
                                 <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
-                                <span>Start: @experience.WorkDateRange.StartDate?.ToString("yyyy-MM-dd") - End: @experience.WorkDateRange.EndDate?.ToString("yyyy-MM-dd")</span>
+                                <span><b>Start:</b> @experience.WorkDateRange.StartDate?.ToString("yyyy-MM-dd") &nbsp; <b>End:</b> @(experience.WorkDateRange.EndDate?.ToString("yyyy-MM-dd") ?? "ongoing")</span>
                             </div>
                             <div class="work-detail">
                                 <BitIcon IconName="BitIconName.Link" AriaLabel="Link"></BitIcon>
@@ -74,7 +74,7 @@ else
                             <div class="company-name">@education.UniversityName</div>
                             <div class="work-detail">
                                 <BitIcon IconName="BitIconName.Calendar" AriaLabel="Calendar"></BitIcon>
-                                <span>Start: @education.EducationDateRange.StartDate?.ToString("yyyy-MM-dd") - End: @education.EducationDateRange.EndDate?.ToString("yyyy-MM-dd")</span>
+                                <span><b>Start:</b> @education.EducationDateRange.StartDate?.ToString("yyyy-MM-dd") &nbsp; <b>End:</b> @education.EducationDateRange.EndDate?.ToString("yyyy-MM-dd")</span>
                             </div>
                         </div>
                     }
